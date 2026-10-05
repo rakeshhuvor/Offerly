@@ -35,17 +35,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morganMiddleware);
-app.get("/create-my-admin-rakesh", async (req, res) => {
-  try {
-    const User = (await import("./modules/user/user.model.js")).default;
-    const exists = await User.findOne({ email: "rakesh@offerly.com" });
-    if (exists) return res.send("Admin already exists: rakesh@offerly.com / Rakesh@123 - You can login now!");
-    await User.create({ name: "Rakesh Huvor", email: "rakesh@offerly.com", password: "Rakesh@123", role: "admin" });
-    res.send("SUCCESS! Admin created: rakesh@offerly.com / Rakesh@123");
-  } catch (e) {
-    res.status(500).send("Error: " + e.message);
-  }
-});
+
 app.use("/api", router);
 
 app.use(errorHandler);
