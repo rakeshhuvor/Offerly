@@ -11,7 +11,7 @@ import router from "./routes/index.js";
 const app = express();
 app.set("trust proxy", 1);
 
-const allowedOrigins = ["http://localhost:5173", "https://offerly-sigma.vercel.app", "https://offerly-sigma.vercel.app/login", process.env.CLIENT_URL].filter(Boolean);
+const allowedOrigins = ["http://localhost:5173", "https://offerly-two.vercel.app", "https://offerly-two-git-main-rakeshhuvors-projects.vercel.app"];
 
 const corsOptions = {
   origin: function (origin, callback) {
