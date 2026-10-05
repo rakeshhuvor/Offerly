@@ -8,7 +8,7 @@ import {
   getAffiliateAnalytics,
 } from "./analytics.controller.js";
 import { protect, authorize } from "../../middleware/auth.middleware.js";
-
+import { redisClient } from "../../config/redis.js";
 const router = express.Router();
 
 router.get("/today", getTodayStats);
@@ -23,5 +23,8 @@ router.get(
   authorize("affiliate"),
   getAffiliateAnalytics,
 );
-
+router.get("/clear-demo", async (req, res) => {
+  await redisClient.flushAll();
+  res.send("Demo cleared");
+});
 export default router;
